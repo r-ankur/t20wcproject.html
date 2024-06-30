@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="myNewWorld"/>
+    <meta name="keywords" content="myNewWorld">    
+    <meta property="og:url" content="https://yourusername.github.io/myNewWorld/">
+    <meta property="og:site_name" content="myNewWorld">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="myNewWorld">
+    <meta property="og:description" content="myNewWorld">
+    <meta property="og:image" content="layout/images/your-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <title>MY New World</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Minified Custom CSS -->
+    <link rel="stylesheet" href="layout/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="layout/images/your-icon.ico">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+        }
+        .earth-container {
+            text-align: center;
+        }
+        .earth-image {
+            width: 200px;
+            height: auto;
+        }
+        .dropdown-menu {
+            background-color: #343a40; 
+        }
+        .dropdown-item:hover,
+        .dropdown-item.active {
+            background-color: #007bff; 
+        }
+    </style>
+</head>
+<body>
+    <div class="earth-container">
+        <img src="144p.png" alt="Earth 144p" class="earth-image d-none" id="image-144p">
+        <img src="240p.png" alt="Earth 240p" class="earth-image d-none" id="image-240p">
+        <img src="480p.png" alt="Earth 480p" class="earth-image d-none" id="image-480p">
+        <img src="720p (1).png" alt="Earth 720p" class="earth-image d-none" id="image-720p">
+        <video src="1719765940961269.mp4" loop class="d-none" id="earth-video"></video>
+        <div class="dropdown mt-2">
+            <button class="btn btn-secondary dropdown-toggle quality" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Quality
+            </button>
+            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item text-white" href="#" data-quality="144p">144p</a>
+                <a class="dropdown-item text-white" href="#" data-quality="240p">240p</a>
+                <a class="dropdown-item text-white" href="#" data-quality="480p">480p</a>
+                <a class="dropdown-item text-white" href="#" data-quality="720p">720p</a>
+                <a class="dropdown-item text-white" href="#" data-quality="1080p">1080p</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="layout/js/all.min.js"></script>
+    <script src="layout/js/front-end.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.dropdown-item').click(function(event) {
+                event.preventDefault(); 
+
+                var quality = $(this).data('quality');
+
+                $('.earth-image, #earth-video').addClass('d-none');
+
+                if (quality === '1080p') {
+                    $('#earth-video').removeClass('d-none');
+                    $('#earth-video')[0].play();
+                } else {
+                    $('#image-' + quality).removeClass('d-none');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
